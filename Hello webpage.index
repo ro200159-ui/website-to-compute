@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to the Party!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  animation: bounce 1s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: gold;
+  animation: fall 3s infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1 id="message">Welcome!</h1>
+  </div>  <script>
+    const messages = [
+      "You're so beautiful!",
+      "You're the most active participant!",
+      "You're full of positive energy!",
+      "You're a creative soul!",
+      "You're a future leader!",
+      "You light up the room!",
+      "You're truly inspiring!",
+      "You're so kind and thoughtful!",
+      "You're unforgettable!",
+      "You're the spark of this event!"
+    ];
+
+    const message = messages[Math.floor(Math.random() * messages.length)];
+    document.getElementById("message").innerText = message;
+
+    // Add confetti effect
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      document.body.appendChild(confetti);
+    }
+  </script></body>
+</html>100
